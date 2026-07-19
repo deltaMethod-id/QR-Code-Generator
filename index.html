@@ -1,171 +1,51 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>QR Generator</title>
+    <title>QR Generator</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="qr.png">
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:"Poppins",sans-serif;
-}
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-body{
-    background:linear-gradient(135deg,#1a0000,#420000,#8b0000);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-}
-
-.container{
-    width:95%;
-    max-width:460px;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.15);
-    backdrop-filter:blur(12px);
-    border-radius:22px;
-    padding:30px;
-    text-align:center;
-    box-shadow:0 0 35px rgba(255,0,0,.4);
-}
-
-.logo{
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    background:linear-gradient(45deg,#ff0000,#ff5555);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin:auto;
-    font-size:42px;
-    box-shadow:0 0 25px red;
-}
-
-h1{
-    margin-top:18px;
-    font-size:30px;
-}
-
-p{
-    opacity:.85;
-    margin-top:8px;
-    margin-bottom:22px;
-}
-
-input{
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    outline:none;
-    background:#fff;
-    color:#111;
-    font-size:15px;
-}
-
-button{
-    width:100%;
-    margin-top:18px;
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    background:linear-gradient(45deg,#ff0000,#b30000);
-    color:white;
-    font-size:17px;
-    cursor:pointer;
-    transition:.25s;
-    font-weight:bold;
-}
-
-button:hover{
-    transform:scale(1.03);
-    box-shadow:0 0 20px red;
-}
-
-#qrcode{
-    margin-top:28px;
-    display:flex;
-    justify-content:center;
-}
-
-#qrcode img,
-#qrcode canvas{
-    background:white;
-    padding:12px;
-    border-radius:15px;
-}
-
-.footer{
-    margin-top:25px;
-    opacity:.7;
-    font-size:13px;
-}
-</style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+    <div class="container">
 
-<div class="logo">
-📱
-</div>
+        <div class="logo">
+            <img src="qr.png" alt="QR Generator Logo">
+        </div>
 
-<h1>QR Generator</h1>
+        <h1>QR Generator</h1>
 
-<p>Buat QR Code dalam hitungan detik.</p>
+        <p>Buat QR Code dalam hitungan detik.</p>
 
-<input
-id="text"
-type="text"
-placeholder="Masukkan teks atau URL...">
+        <input
+            id="text"
+            type="text"
+            placeholder="Masukkan teks atau URL...">
 
-<button onclick="generateQR()">
-Generate QR Code
-</button>
+        <button id="generateBtn">
+            Generate QR Code
+        </button>
 
-<div id="qrcode"></div>
+        <div id="qrcode"></div>
 
-<div class="footer">
-Made with ❤️
-</div>
+        <div class="footer">
+            Made with ChatGPT
+        </div>
 
-</div>
+    </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-<script>
-function generateQR(){
-
-const text=document.getElementById("text").value.trim();
-const qr=document.getElementById("qrcode");
-
-qr.innerHTML="";
-
-if(text===""){
-alert("Masukkan teks terlebih dahulu!");
-return;
-}
-
-new QRCode(qr,{
-text:text,
-width:220,
-height:220,
-colorDark:"#b30000",
-colorLight:"#ffffff",
-correctLevel:QRCode.CorrectLevel.H
-});
-
-}
-</script>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 
 </body>
 </html>
